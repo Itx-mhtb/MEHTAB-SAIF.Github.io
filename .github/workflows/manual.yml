@@ -1,0 +1,20 @@
+name: Form Submission Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      form_data:
+        description: Form submission data
+        required: true
+
+jobs:
+  send_email:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send email
+        uses: actions/send-email@v1
+        with:
+          to: 'mehtabwriters@gmail.com'
+          subject: 'Form submission'
+          body: 'Form submission data: {{ form_data }}'
+
